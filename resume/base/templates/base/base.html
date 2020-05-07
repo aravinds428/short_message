@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main Page</title>
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  -->
+	<link rel="stylesheet"  href="{% static 'base/style_sheet.css' %}">
+</head>
+<body>
+	<h1>Welcome to the first page</h1>
+	<form action='/search' method="post">
+		{% csrf_token %}
+		<label for="textarea" style="position:relative;left:400px;">
+	    <h3 style="font-family:helvetica-neue;font-size: 30px;color:dodgerblue;">Tweet</h3></label><br>
+		<textarea row="10" cols="100" id="text_box" name="firstname"
+		style="position:relative;left:100px;">
+		</textarea> <br>
+		<input  type="submit"  id = "submit" value="submit"
+		style="position:relative;left:400px;top:30px;width:120px;height:30px;color:black;">
+	</form>
+	<br><br>
+	<!--<ul>
+		{% for obj in context %}
+			<li>{{obj.text}}</li>
+		{% endfor %}
+	</ul> -->
+	<div style="position:relative;left:250px;">
+		<table id="customers">
+			<tr>
+				<h2><th style="color:dodgerblue;">Tweet</th></h2>
+				<h2><th style="position:relative;left:300px;color:dodgerblue;">Date and time </th></h2>
+			</tr>
+			{% for obj in context %}
+			<tr>
+				<th>{{obj.text}}</th>
+				<th style="position:relative;left:300px;">{{obj.date_post}}</th>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</body>
+</html>
